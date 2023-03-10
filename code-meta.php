@@ -10,7 +10,7 @@
  * Author URI:      https://codemilitant.com
  * Text Domain:     code-meta
  * Domain Path:     /languages
- * Version:         1.8.0
+ * Version:         2.2.1
  *
  * @package         Code_Meta
  */

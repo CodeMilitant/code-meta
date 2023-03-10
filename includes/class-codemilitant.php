@@ -134,9 +134,28 @@ final class CodeMeta
                         $get_content_tags = new CM_Content_Meta_Tags();
                         echo $get_content_tags->cm_get_meta_tag_content();
                 }
-                unset ($get_content_tags);
+                unset($get_content_tags);
         }
 
+        /**
+         * What are all the post types found in the database?
+         * 
+         * @return array
+         */
+        public function cm_get_post_types()
+        {
+                $args = array(
+                        'public'   => true,
+                        '_builtin' => false
+                );
+
+                $output = 'names'; // 'names' or 'objects' (default: 'names')
+                $operator = 'and'; // 'and' or 'or' (default: 'and')
+
+                $post_types = get_post_types($args, $output, $operator);
+                $post_types = array_diff($post_types, array('attachment', 'revision', 'nav_menu_item', 'custom_css', 'customize_changeset', 'oembed_cache', 'user_request', 'wp_block'));
+                return $post_types;
+        }
         /**
          * What type of request is this?
          *
@@ -145,6 +164,10 @@ final class CodeMeta
          */
         private function is_request($type)
         {
+                $post_types = $this->cm_get_post_types();
+                if (!empty($post_types)) {
+                        $post_types = array_merge($post_types, array('post', 'page'));
+                }
                 switch ($type) {
                         case 'admin':
                                 return is_admin();
@@ -153,7 +176,7 @@ final class CodeMeta
                         case 'cron':
                                 return defined('DOING_CRON');
                         case 'found':
-                                return (!is_404() && is_singular('post', 'page', 'project') || (!is_404() && function_exists('WC') && is_singular('product')));
+                                return (!is_404() && is_singular($post_types) || (!is_404() && function_exists('WC') && is_singular('product')));
                         case 'templates':
                                 return (!is_admin() || defined('DOING_AJAX')) && !defined('DOING_CRON');
                 }
