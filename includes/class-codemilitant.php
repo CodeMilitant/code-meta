@@ -153,7 +153,7 @@ final class CodeMeta
                         case 'cron':
                                 return defined('DOING_CRON');
                         case 'found':
-                                return (!is_404() && is_singular('post', 'page') || (!is_404() && function_exists('WC') && is_singular('product')));
+                                return (!is_404() && is_singular('post', 'page', 'project') || (!is_404() && function_exists('WC') && is_singular('product')));
                         case 'templates':
                                 return (!is_admin() || defined('DOING_AJAX')) && !defined('DOING_CRON');
                 }

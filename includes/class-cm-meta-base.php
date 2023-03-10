@@ -18,14 +18,9 @@ trait CM_Meta_Base
         ($id == '' || $id == null) ? $id = (int) self::$metaPost['ID'] : $id = (int) $id;
 
         switch (self::$metaPost['post_type']) {
-            case ('post'):
-                static::$metaBase = self::$metaPost;
-                static::$metaBase['post_meta'] = array_map(function ($a) {
-                    return $a[0];
-                }, get_post_meta($id));
-                return static::$metaBase;
-                break;
-            case ('page'):
+            case 'post':
+            case 'page':
+            case 'project':
                 static::$metaBase = self::$metaPost;
                 static::$metaBase['post_meta'] = array_map(function ($a) {
                     return $a[0];
