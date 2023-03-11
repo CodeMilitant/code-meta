@@ -3,9 +3,9 @@
 // defined( 'ABSPATH' ) || exit;
 
 /**
- * Plugin Name:     CodeMilitant Meta Tags
+ * Plugin Name:     Code Meta
  * Plugin URI:      https://codemilitant.com/product/codemilitant-seo-opengraph-meta-tag-generator-wordpress-plugin/
- * Description:     The CodeMilitant meta tag generator will create the vital meta tags required by the search engines for proper indexing of your website.
+ * Description:     Code Meta tag generator will create the vital Opengraph meta tags required by search engines for proper SEO indexing of your website.
  * Author:          CodeMilitant
  * Author URI:      https://codemilitant.com
  * Text Domain:     code-meta

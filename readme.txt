@@ -1,4 +1,4 @@
-=== CodeMeta Meta Tag Generator ===
+=== Code Meta Meta Tag Generator ===
 Contributors: codemilitant
 Tags: seo, meta tags, opengraph, search engine rankings
 Requires at least: 4.5
@@ -12,7 +12,7 @@ CodeMilitant OpenGraph Meta Tag Generator is the free foundation for the most po
 
 == Description ==
 
-CodeMeta OpenGraph Meta Tag Generator by CodeMilitant
+Code Meta OpenGraph Meta Tag Generator by CodeMilitant
 
 This could easily be the single most important WordPress plugin you can install for your WordPress site ... and it's free!
 
@@ -20,7 +20,7 @@ The goal of code should be to work for us, with little to no intervention from t
 
 This plugin is designed to provide comprehensive meta tag solutions for maximum SEO results.
 
-CodeMeta is focused on content creators such as the photographer, musician and videographer by including vital EXIF information in the meta tags. This will directly help combat "deep fakes" to protect your intellectual property in the public square.
+Code Meta is focused on content creators such as the photographer, musician and videographer by including vital EXIF information in the meta tags. This will directly help combat "deep fakes" to protect your intellectual property in the public square.
 
 == Frequently Asked Questions ==
 
@@ -28,9 +28,9 @@ CodeMeta is focused on content creators such as the photographer, musician and v
 
 For your website to achieve top search engine rankings, every post type (posts, pages, projects and products) must have at least 300 words of content and associated categories and tags must be assigned to each type.
 
-CodeMeta builds the Opengraph meta tags the search engines use to help rank your website. There's no way to have a top ranked website without Opengraph meta tags.
+Code Meta builds the Opengraph meta tags the search engines use to help rank your website. There's no way to have a top ranked website without Opengraph meta tags.
 
-= Will the CodeMeta plugin build the Opengraph meta for my media files? =
+= Will the Code Meta plugin build the Opengraph meta for my media files? =
 
 Yes! In fact, it builds a complete array of all media files found on the page. This includes images, audio and video.
 
@@ -38,29 +38,29 @@ It even helps with "deep fakes", as mentioned above.
 
 = Will this work with custom post types? =
 
-CodeMeta tries hard to work with every post type, but that depends on the structure of the post type.
+Code Meta tries hard to work with every post type, but that depends on the structure of the post type.
 
-CodeMeta tries to parse all post types, however, it may not get everything right. The public GitHub (below) is available should you have any troubles with a custom post type.
+Code Meta tries to parse all post types, however, it may not get everything right. The public GitHub (below) is available should you have any troubles with a custom post type.
 
 = Where do I setup the parameters for this plugin after it's installed? =
 
 There are no paramters to setup. Just install, activate and forget about it.
 
-The admin screen in the CodeMeta menu will show you a sample of the actual meta tags generated from a random post type found on your website.
+The admin screen in the Code Meta menu will show you a sample of the actual meta tags generated from a random post type found on your website.
 
-= Will CodeMeta work with all ecommerce plugins? =
+= Will Code Meta work with all ecommerce plugins? =
 
 No, this plugin is only optimized for WooCommerce. Future premium versions may encompass more ecommerce solutions.
 
-= Will CodeMeta help me build categories and keywords from my WordPress content? =
+= Will Code Meta help me build categories and keywords from my WordPress content? =
 
 Yes! The CodeSEO AI premium version builds the categories and keyword phrases for a small monthly fee.
 
-= Will this CodeMeta plugin show my existing keywords and categories? =
+= Will this Code Meta plugin show my existing keywords and categories? =
 
 Yes, but you have to add all these elements manually to your WordPress content. The CodeSEO AI premium version will do this for you for a small monthly fee.
 
-= Will the CodeMeta plugin connect my social networks to my website? =
+= Will the Code Meta plugin connect my social networks to my website? =
 
 Yes, the social network premium version is only $3 dollars (USD) per month for social network integration.
 
@@ -74,11 +74,11 @@ An array of Opengraph meta tags will be generated for all media found in the pos
 
 No, because other plugins produce basic meta tags, they will conflict with one another.
 
-= Does CodeMeta add records to my database? =
+= Does Code Meta add records to my database? =
 
 No, the content is efficiently generated through PHP and will persistently remain using any server or WordPress caching.
 
-= Where can I get help or talk to other users about CodeMeta by CodeMilitant? =
+= Where can I get help or talk to other users about Code Meta by CodeMilitant? =
 
 You will find help and be able to submit issues via our GitHub repo [GitHub repository](https://github.com/CodeMilitant/code-meta/?utm_medium=referral&utm_source=wordpress.org&utm_campaign=wp_org_repo_listing)
 
@@ -109,7 +109,7 @@ To do this, login to your WordPress admin, select the 'Tools->Site Health' menu,
 2. Login to your WordPress admin.
 3. Select 'Plugins->Add New'
 4. Click the 'Upload Plugin' button at the top of the page.
-5. Click the 'Select File' button and select the CodeMeta zip file.
+5. Click the 'Select File' button and select the Code Meta zip file.
 6. Click the 'Install Now' button.
 7. Click the blue 'Activate Now' button.
 
@@ -146,7 +146,7 @@ CodeMilitant offers two upgrade packages:
 
 = 2.2.1 2023-03-07 =
 
-**CodeMeta**
+**Code Meta**
 
 * This is the initial plugin version for the WordPress repository.
 * Previous versions were used exclusively for private clients over the past five years.

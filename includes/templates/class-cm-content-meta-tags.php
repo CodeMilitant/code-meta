@@ -36,20 +36,20 @@ class CM_Content_Meta_Tags
         $metaHeadStructure = array('og_description', 'og_keywords');
         foreach ($metaTags as $metaKey => $metaValue) {
             if (in_array($metaKey, $metaHeadStructure, true) && !empty($metaValue)) {
-                $generate .= '<meta name="' . str_replace('og_', '', $metaKey) . '" content="' . $metaValue . '" />' . PHP_EOL;
+                $generate .= '<meta name="' . str_replace('og_', '', $metaKey) . '" content="' . esc_attr_e($metaValue, 'code-meta') . '" />' . PHP_EOL;
             }
         }
         $metaBodyStructure = array('og_type', 'og_title', 'og_url', 'og_description', 'og_determiner', 'og_product_sku', 'og_product_price', 'og_product_price_currency', 'og_product_availability', 'og_product_color', 'og_product_size', 'og_date_on_sale_from', 'og_date_on_sale_to');
         foreach ($metaTags as $metaKey => $metaValue) {
             if (in_array($metaKey, $metaBodyStructure, true) && !empty($metaValue)) {
-                $generate .= '<meta property="' . str_replace('_', ':', $metaKey) . '" content="' . $metaValue . '" />' . PHP_EOL;
+                $generate .= '<meta property="' . str_replace('_', ':', $metaKey) . '" content="' . esc_attr_e($metaValue, 'code-meta') . '" />' . PHP_EOL;
             }
         }
         foreach ($metaTags as $metaKey => $metaValue) {
             $metaMediaStructure = array('og_image_url', 'og_image_width', 'og_image_height', 'og_image_alt', 'og_image_caption', 'og_image_copyright', 'og_image_type', 'og_audio_type', 'og_video_type');
             foreach($metaValue as $mk => $mv) {
                 if (in_array($mk, $metaMediaStructure, true) && !empty($mv)) {
-                    $generate .= '<meta property="' . str_replace('_', ':', $mk) . '" content="' . $mv . '" />' . PHP_EOL;
+                    $generate .= '<meta property="' . str_replace('_', ':', $mk) . '" content="' . esc_attr_e($mv, 'code-meta') . '" />' . PHP_EOL;
                 }
             }
         }
