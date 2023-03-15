@@ -20,8 +20,8 @@ class CM_Admin_Menu
     public function cm_codemeta_admin_menu()
     {
         add_menu_page(
-            'CodeMeta',
-            'CodeMeta',
+            'Code Meta',
+            'Code Meta',
             'edit_posts',
             'code-meta',
             array($this, 'code_meta_menu_content'),
@@ -34,7 +34,7 @@ class CM_Admin_Menu
     {
         add_submenu_page(
             'code-meta',
-            'CodeMeta Upgrade',
+            'Code Meta Upgrade',
             'Upgrade',
             'edit_posts',
             'code-meta-upgrade',
@@ -93,7 +93,7 @@ class CM_Admin_Menu
             <p>Click the button below to upgrade this free plugin to connect your social networks for just $3 dollars (USD) per month.</p>
             </div>
             <div class="code-seo-ai-button">
-            <a target="_blank" href="https://codemilitant.com/product/codemilitant-seo-opengraph-meta-tag-generator-wordpress-plugin/" class="button button-primary">CodeSEO Social Profiles $3/month</a>
+            <a target="_blank" href="https://codemilitant.com/downloads/code-seo-social-network-add-on/" class="button button-primary">CodeSEO Social Profiles $3/month</a>
             </div>
             </td>
             <td class="code-seo-ai-content">
@@ -122,7 +122,7 @@ class CM_Admin_Menu
             <p>We currently offer these services for the English language only, however, we are developing these services for all languages.</p>
             </div>
             <div class="code-seo-ai-button">
-            <a target="_blank" href="https://codemilitant.com/product/codemilitant-seo-opengraph-meta-tag-generator-wordpress-plugin/" class="button button-primary">Full CodeSEO AI $9/300/month</a>
+            <a target="_blank" href="https://codemilitant.com/downloads/code-seo-ai-keyword-meta-tag-generator/" class="button button-primary">Full CodeSEO AI $9/300/month</a>
             </div>
             </td>
             </tr>

@@ -24,25 +24,28 @@ trait CM_Media_Details
 	private static function get_media_ids($media_details)
 	{
 
+		$media_details['post_meta']['_thumbnail_id'] = '';
 		$media_ids = array();
 		$combined_ids = array();
 
 		// must return an associative array to ensure that empty arrays are parsed without error when combining
+		if ((int) $media_details['post_meta']['_thumbnail_id']) {
+			$media_ids['featured'][] = (int) $media_details['post_meta']['_thumbnail_id'];
+		}
 		if ($media_details['post_type'] == 'product') {
 			$media_ids['featured'][] = (int) $media_details['image_id'];
 			$media_ids['gallery'] = $media_details['gallery_image_ids'];
-			$media_ids['content'] = self::get_content_ids($media_details);
-		} else {
-			$media_ids['featured'][] = (int) $media_details['post_meta']['_thumbnail_id'];
-			$media_ids['content'] = self::get_content_ids($media_details);
 		}
-
-		foreach ($media_ids as $value) {
-			foreach ($value as $v) {
-				($v > 0) ? $combined_ids[] = $v : '';
+		// get content media ids regardless of post type
+		$media_ids['content'] = self::get_content_ids($media_details);
+		if ($media_ids) {
+			foreach ($media_ids as $value) {
+				foreach ($value as $v) {
+					($v > 0) ? $combined_ids[] = $v : '';
+				}
 			}
 		}
-
+		//must return an array to ensure that empty arrays are parsed without error when combining
 		return array_unique($combined_ids);
 	}
 
@@ -50,6 +53,7 @@ trait CM_Media_Details
 	{
 
 		$post_content_images = '';
+		$media_content = array();
 		$media_content_ids = array();
 
 		if ($media_details['post_type'] == 'product') {
@@ -72,7 +76,7 @@ trait CM_Media_Details
 			$media_full_size = preg_replace('/\-\d{1,5}x\d{1,5}\./', '.', $a);
 			return attachment_url_to_postid($media_full_size);
 		}, $media_content[0]);
-
+		//must return array to ensure that empty arrays are parsed without error when combining
 		return array_unique($media_content_ids);
 	}
 
@@ -88,7 +92,9 @@ trait CM_Media_Details
 			$media_meta['og_type'] = preg_replace('/(image|audio|video|application|text).{1,60}/i', "og_$1_", $media_meta['mime_type']);
 			$media_meta[$media_meta['og_type'] . 'width'] = $media_meta['metadata']['width'];
 			$media_meta[$media_meta['og_type'] . 'height'] = $media_meta['metadata']['height'];
-			$media_meta[$media_meta['og_type'] . 'alt'] = $media_meta_raw['_wp_attachment_image_alt'][0];
+			if (!empty($media_meta_raw['_wp_attachment_image_alt'])) {
+				$media_meta_raw['_wp_attachment_image_alt'][0] ? $media_meta[$media_meta['og_type'] . 'alt'] = $media_meta_raw['_wp_attachment_image_alt'][0] : '';
+			}
 			$media_meta['exif'] = $media_meta['metadata']['image_meta'];
 			$media_meta[$media_meta['og_type'] . 'caption'] = $media_meta['exif']['caption'];
 			$media_meta[$media_meta['og_type'] . 'copyright'] = $media_meta['exif']['copyright'];

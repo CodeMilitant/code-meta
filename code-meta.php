@@ -4,7 +4,7 @@
 
 /**
  * Plugin Name:     Code Meta
- * Plugin URI:      https://codemilitant.com/product/codemilitant-seo-opengraph-meta-tag-generator-wordpress-plugin/
+ * Plugin URI:      https://codemilitant.com/wordpress/code-meta-wordpress-plugin/
  * Description:     Code Meta tag generator will create the vital Opengraph meta tags required by search engines for proper SEO indexing of your website.
  * Author:          CodeMilitant
  * Author URI:      https://codemilitant.com

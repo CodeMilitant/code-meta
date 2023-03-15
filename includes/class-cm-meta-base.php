@@ -8,7 +8,6 @@ use Exception;
 
 trait CM_Meta_Base
 {
-
     public static $metaBase = array();
     public static $metaPost = array();
 
@@ -17,8 +16,14 @@ trait CM_Meta_Base
         self::$metaPost = get_post($id, ARRAY_A, 'display');
         ($id == '' || $id == null) ? $id = (int) self::$metaPost['ID'] : $id = (int) $id;
 
+        static::$metaBase = self::$metaPost;
+        static::$metaBase['post_meta'] = array_map(function ($a) {
+            return $a[0];
+        }, get_post_meta($id));
+        // If the post type is a WooCommerce product, get the product data and merge it with the post data
         if (self::$metaPost['post_type'] == 'product') {
             static::$metaBase = (array) wc_get_product($id, '')->get_data();
+            static::$metaBase['currency'] = get_option('woocommerce_currency');
             static::$metaBase = array_map(function ($a) {
                 if (is_array($a)) {
                     foreach ($a as $key => $value) {
@@ -30,11 +35,6 @@ trait CM_Meta_Base
                 return $a;
             }, static::$metaBase);
             static::$metaBase = array_merge(static::$metaBase, self::$metaPost);
-        } else {
-            static::$metaBase = self::$metaPost;
-            static::$metaBase['post_meta'] = array_map(function ($a) {
-                return $a[0];
-            }, get_post_meta($id));
         }
         if (!is_wp_error(static::$metaBase) && !empty(static::$metaBase)) {
             return static::$metaBase;

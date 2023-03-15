@@ -19,11 +19,11 @@ msgid "Code Meta"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://codemilitant.com/product/codemilitant-seo-opengraph-meta-tag-generator-wordpress-plugin/"
+msgid "https://codemilitant.com/wordpress/code-meta-wordpress-plugin/"
 msgstr ""
 
 #. Description of the plugin
-msgid "CodeMeta meta tag generator will create the vital Opengraph meta tags required by search engines for proper SEO indexing of your website."
+msgid "Code Meta tag generator will create the vital Opengraph meta tags required by search engines for proper SEO indexing of your website."
 msgstr ""
 
 #. Author of the plugin

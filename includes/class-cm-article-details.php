@@ -22,6 +22,7 @@ trait CM_Article_Details
     {
 
         $article = array();
+        $article_tags = '';
         $article['ID'] = $post_details['ID'];
         $article['og_title'] = $post_details['post_title'];
         $article['post_content'] = $post_details['post_content'];
@@ -63,9 +64,13 @@ trait CM_Article_Details
             }
         }
 
-        $unique_tags = array_unique(array_map('trim', explode(',', $article_tags)));
-        sort($unique_tags, SORT_NATURAL | SORT_FLAG_CASE);
-        $article['og_keywords'] = rtrim(strtolower(implode(', ', $unique_tags)), ', ');
+        if ($article_tags) {
+            $unique_tags = array_unique(array_map('trim', explode(',', $article_tags)));
+            sort($unique_tags, SORT_NATURAL | SORT_FLAG_CASE);
+            $article['og_keywords'] = rtrim(strtolower(implode(', ', $unique_tags)), ', ');
+        } else {
+            $article['og_keywords'] = '';
+        }
 
         if ($post_details['post_type'] == 'product') {
             $article['wc_terms'] = get_the_terms($post_details['ID'], 'product_tag');
@@ -73,7 +78,7 @@ trait CM_Article_Details
             $article['og_product_name'] = strtolower($post_details['name']);
             $article['og_product_sku'] = strtolower($post_details['sku']);
             $article['og_product_price'] = $post_details['price'];
-            $article['og_product_currency'] = $post_details['currency'];
+            $post_details['currency'] ? $article['og_product_currency'] = $post_details['currency'] : $article['og_product_currency'] = 'USD';
             $article['og_product_availability'] = $post_details['stock_status'];
             $article['og_date_on_sale_from'] = $post_details['date_on_sale_from'];
             $article['og_date_on_sale_to'] = $post_details['date_on_sale_to'];
@@ -82,7 +87,6 @@ trait CM_Article_Details
                 $article['og_product_size'] = strtolower(implode(', ', $post_details['attributes']['size']['options']));
             }
         }
-
         return $article;
     }
 }
