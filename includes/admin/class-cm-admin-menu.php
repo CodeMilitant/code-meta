@@ -43,8 +43,6 @@ class CM_Admin_Menu
         );
     }
 
-    public static $sample_code = '';
-
     public function code_meta_menu_content()
     {
         echo '<table id="codemilitant-congratulations">
