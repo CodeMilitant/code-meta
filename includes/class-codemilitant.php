@@ -93,7 +93,6 @@ final class CodeMeta
          */
         private function define_constants()
         {
-                $this->define('UPLOADS', wp_upload_dir(null, false));
                 $this->define('CM_ABSPATH', dirname(CM_META_FILE) . '/');
                 $this->define('CM_PLUGIN_BASENAME', plugin_basename(CM_META_FILE));
                 $this->define('CM_VERSION', $this->version);
