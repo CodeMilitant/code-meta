@@ -87,7 +87,7 @@ trait CM_Media_Details
 		$media_meta = array_map(function ($a) {
 			$media_meta_raw = get_post_meta((int) $a);
 			$media_meta['metadata'] = maybe_unserialize($media_meta_raw['_wp_attachment_metadata'][0]);
-			$media_meta['og_image_url'] = UPLOADS['baseurl'] . '/' .  $media_meta['metadata']['file'];
+			$media_meta['og_image_url'] = wp_upload_dir()['baseurl'] . '/' .  $media_meta['metadata']['file'];
 			$media_meta['mime_type'] = self::getFilename($media_meta['metadata']['file']);
 			$media_meta['og_type'] = preg_replace('/(image|audio|video|application|text).{1,60}/i', "og_$1_", $media_meta['mime_type']);
 			$media_meta[$media_meta['og_type'] . 'width'] = $media_meta['metadata']['width'];

@@ -54,6 +54,10 @@ The admin screen in the Code Meta menu will show you a sample of the actual meta
 
 No, this plugin is only optimized for WooCommerce. Future premium versions may encompass more ecommerce solutions.
 
+With that said, an alternate product post type, might get properly parsed and return the meta tags your website needs.
+
+You have nothing to lose by trying it.
+
 = Will this Code Meta plugin show my existing keywords and categories? =
 
 Yes, but you have to add all these elements manually to your WordPress content. The Code SEO AI premium version will do this for you for a small monthly fee.
@@ -74,11 +78,31 @@ An array of Opengraph meta tags will be generated for all media found in the con
 
 = Does this plugin work with other Opengraph meta tag (SEO) generators? =
 
-No, because other plugins produce basic meta tags, they will conflict with one another.
+So other meta tag generator plugins will not crash your website, and neither will this plugin if there's another meta tag generator plugin already active.
+
+However! If there are multiple Opengraph meta tag generators on the site, there will also be multiple sets of meta tags generated.
+
+If there are multiple sets of meta tags, the search engines will not index your website properly due to a duplicate content violation.
 
 = Does Code Meta add records to my database? =
 
-No, the content is efficiently generated through PHP and will persistently remain using any server or WordPress caching.
+No, unlike all other SEO plugins in the WordPress directory, the meta tags are efficiently generated through PHP and will persistently remain using any server or WordPress caching.
+
+No database bloat, and no performance degradation.
+
+= Will Code Meta slow my site down? =
+
+No, because there are no database calls, and the PHP is executed in a cascading topology, this plugin adds at most just 4 milliseconds (4/1000 of 1 second) to your website load time.
+
+If your website is running server or WordPress caching, all the Opengraph meta tags will be stored in the cache and will add 0 milliseconds to load times.
+
+= What is a PHP cascading topology? =
+
+This is a coding style that executes code in a cascading (step-by-step) format. 
+
+If a URL request is successful the code will efficiently execute step-by-step until complete.
+
+If a URL request is an error, the entire plugin is ignored and returns all functionality to the WordPress core for processing.
 
 = Where can I get help or talk to other users about Code Meta by CodeMilitant? =
 

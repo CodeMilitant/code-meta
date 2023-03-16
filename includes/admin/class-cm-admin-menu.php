@@ -57,7 +57,7 @@ class CM_Admin_Menu
             <td class="code-meta-congratulations">
             <div>
             <p>You have installed the foundation for the most effective AI for SEO.</p>
-            <p>The column on the right is showing random meta tags that have been generated from your posts, pages, projects or products.</p>
+            <p>The column on the right is showing actual meta tags that have been generated from a random post, page, project or product from your website.</p>
             <p>This plugin is the free foundation to a highly intelligent SEO algorithm for automatically populating categories and keyword phrases (tags) to all of your post content.</p>
             <p>Upgrading for just $3 dollars (USD) per month to connect your social networks will produce even better search engine results and is vital for more website clicks.</p>
             <p>With over 30 social networks to choose from, the search engines and your social networks will love your website!</p>

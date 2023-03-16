@@ -54,6 +54,6 @@ table #codemilitant-sample-meta tr:nth-child(odd) td.code-meta-color {
     font-weight: 500;
 }
 /* Upgrade color for admin submenu */
-li.toplevel_page_code-meta ul.wp-submenu.wp-submenu-wrap li:nth-child(3) a {
+li#toplevel_page_code-meta ul.wp-submenu.wp-submenu-wrap li:nth-child(3) a {
     color: lightgreen !important;
 }
