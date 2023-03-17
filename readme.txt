@@ -1,5 +1,6 @@
 === Code Meta Opengraph Tag Generator ===
 Contributors: codemilitant
+Donate link: https://codemilitant.com/wordpress-plugin/code-meta-plugin-support/
 Tags: seo, meta tags, opengraph, search engine rankings
 Requires at least: 4.5
 Tested up to: 6.1.1
@@ -21,6 +22,10 @@ This plugin is designed to provide comprehensive meta tag solutions for maximum 
 The goal of code should be to work for us, with little to no intervention from the user. This simple philosophy is the way code/computers are supposed to work.
 
 Code Meta is focused on content creators such as the photographer, musician and videographer by including vital EXIF information in the meta tags. This will directly help combat "deep fakes" to protect your intellectual property in the public square.
+
+== Screenshots ==
+
+1. Admin screen showing sample meta tags
 
 == Frequently Asked Questions ==
 
@@ -62,13 +67,13 @@ You have nothing to lose by trying it.
 
 Yes, but you have to add all these elements manually to your WordPress content. The Code SEO AI premium version will do this for you for a small monthly fee.
 
-= Will Code Meta help me build categories and keywords from my WordPress content? =
-
-Yes! The premium Code SEO AI version builds the categories and keyword phrases for a small monthly fee. Please see the Upgrade menu in the plugin.
-
 = Will the Code Meta plugin connect my social networks to my website? =
 
-Yes, the social network premium version is only $3 dollars (USD) per month for social network integration. Please see the Upgrade menu in the plugin.
+[Premium] Yes, the social network premium version is only $3 dollars (USD) per month for social network integration. Please see the Upgrade menu in the plugin.
+
+= Will Code Meta help me build categories and keywords from my WordPress content? =
+
+[Premium] Yes! The premium Code SEO AI version builds the categories and keyword phrases for a small monthly fee. Please see the Upgrade menu in the plugin.
 
 = Will this generate Opengraph meta tags for media EXIF information? =
 
@@ -164,10 +169,14 @@ This process can only be performed once the WP CLI program has been installed.
 
 == Upgrades ==
 
-CodeMilitant offers two upgrade packages:
+[Premium] CodeMilitant offers two upgrade packages:
 
 1. The social network add-on connects all your social networks to your website. There are over 30 social networks available.
 2. The ultimate upgrade starts at just $9 dollars (USD) per month and it will connect your social networks, plus generate categories and keyword phrases, for all your WordPress content using complex AI algorithms.
+
+== Upgrade Notice ==
+
+= 2.2.1 =
 
 == Changelog ==
 

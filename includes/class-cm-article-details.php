@@ -25,8 +25,11 @@ trait CM_Article_Details
         $article_tags = '';
         $article['ID'] = $post_details['ID'];
         $article['og_title'] = $post_details['post_title'];
-        $article['post_content'] = $post_details['post_content'];
-        $article_description = html_entity_decode(wp_strip_all_tags(substr($post_details['post_content'], 0, 320), true));
+        // if site is running Divi or Visual Composer, remove the shortcodes
+        $article['post_content'][] = preg_replace( '~\[/?[^\]]+?/?\]~s', '', $post_details['post_content'] );
+        $article['post_content'][] = preg_replace('~\s+~s', ' ', html_entity_decode(strip_tags($post_details['post_content'])));
+        $article_description = html_entity_decode(substr($article['post_content'][1], 0, 320), true);
+        $article_description = preg_replace('~\s+~sm', ' ', $article_description);
         $article_description = strrpos($article_description, ' ') ? substr($article_description, 0, strrpos($article_description, ' ')) : $article_description;
         $article['og_description'] = $article_description;
         $article['og_url'] = get_permalink($post_details['ID']);
@@ -34,6 +37,7 @@ trait CM_Article_Details
         $article['og_type'] = $post_details['post_type'];
         switch ($article['og_type']) {
             case "post":
+            case "project":
                 //used for referencing a general item or concept
                 $article['og_type'] = "article";
                 $article['og_determiner'] = "a";
