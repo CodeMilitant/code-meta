@@ -66,6 +66,7 @@ class CM_Admin_Menu
             </td>
             <td class="code-meta-tags">
             <p style="text-align:center;width:80%;">These are the sample meta tags this plugin installed from a random blog post, page, project or product on your website.</p>
+            <p style="text-align:center;width:80%;"><b>Refresh Page to See Another Meta Tag Set</b></p>
             <table id="codemilitant-sample-meta">
             <thead></thead>
             <tbody>';
@@ -129,6 +130,6 @@ class CM_Admin_Menu
     }
     public function cm_admin_menu_styles()
     {
-        wp_enqueue_style('cm-codemeta-styles', CM()->plugin_url() . '/assets/cm_codemeta_admin.css', array(), CM()->version, 'all');
+        wp_enqueue_style('cm-codemeta-styles', CM()->plugin_url() . '/includes/admin/cm_codemeta_admin.css', array(), CM()->version, 'all');
     }
 }

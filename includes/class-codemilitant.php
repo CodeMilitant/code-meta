@@ -24,7 +24,7 @@ final class CodeMeta
          *
          * @var string
          */
-        public $version = '2.2.1';
+        public $version = '2.2.3';
 
         /**
          * WP_Query object.

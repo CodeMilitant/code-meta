@@ -1,6 +1,6 @@
 <?php
 
-// defined( 'ABSPATH' ) || exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Plugin Name:     Code Meta
@@ -10,7 +10,7 @@
  * Author URI:      https://codemilitant.com
  * Text Domain:     code-meta
  * Domain Path:     /languages
- * Version:         2.2.1
+ * Version:         2.2.3
  *
  * @package         Code_Meta
  */

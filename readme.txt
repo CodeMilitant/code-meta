@@ -5,7 +5,7 @@ Tags: seo, meta tags, opengraph, search engine rankings
 Requires at least: 4.5
 Tested up to: 6.1.1
 Requires PHP: 7.0
-Stable tag: 2.2.1
+Stable tag: 2.2.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -176,13 +176,21 @@ This process can only be performed once the WP CLI program has been installed.
 
 == Upgrade Notice ==
 
-= 2.2.1 =
+= 2.2.3 =
+
+Please update to this latest version to make the admin pages easier to read.
 
 == Changelog ==
 
-= 2.2.1 2023-03-07 =
+= 2.2.3 2023-04-03 =
 
 **Code Meta**
 
+* Fix: moved CSS out of "assets/" folder and moved into "admin/" folder
+* Update: modified CSS itself to make admin pages more readable
+
+= 2.2.1 2023-03-07 =
+
+* Initial plugin upload after approval from WordPress.org on 2023-03-21
 * This is the initial plugin version for the WordPress repository.
 * Previous versions were used exclusively for private clients over the past five years.
