@@ -89,6 +89,10 @@ However! If there are multiple Opengraph meta tag generators on the site, there 
 
 If there are multiple sets of meta tags, the search engines will not index your website properly due to a duplicate content violation.
 
+= Does Code Meta translate into other languages? =
+
+This plugin is setup for internationalization and should translate all languages native to the WordPress core.
+
 = Does Code Meta add records to my database? =
 
 No, unlike all other SEO plugins in the WordPress directory, the meta tags are efficiently generated through PHP and will persistently remain using any server or WordPress caching.
@@ -182,9 +186,16 @@ Please update to this latest version to make the admin pages easier to read.
 
 == Changelog ==
 
-= 2.2.3 2023-04-03 =
+= 2.2.8 2023-04-06 =
 
 **Code Meta**
+
+* Update: loaded plugin textdomin for internationalization
+* Update: modified meta tag output to use sprintf for better internationalization
+* Update: readme.txt file to explain internationalization functionality
+* Update: loaded WordPress version 6.2 and successfully tested
+
+= 2.2.3 2023-04-03 =
 
 * Fix: moved CSS out of "assets/" folder and moved into "admin/" folder
 * Update: modified CSS itself to make admin pages more readable
