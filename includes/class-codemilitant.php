@@ -24,7 +24,7 @@ final class CodeMeta
          *
          * @var string
          */
-        public $version = '2.2.3';
+        public $version = '2.2.8';
 
         /**
          * WP_Query object.
@@ -117,6 +117,7 @@ final class CodeMeta
         {
 
                 include_once CM_ABSPATH . 'includes/class-autoloader.php';
+                add_action('plugins_loaded', 'code_meta_load_textdomain');
 
                 if ($this->is_request('admin')) {
                         new CM_Admin_Menu();
@@ -176,4 +177,13 @@ final class CodeMeta
         {
                 return untrailingslashit(plugin_dir_path(CM_META_FILE));
         }
+
+        function code_meta_load_textdomain() {
+                // The path to the 'languages' directory inside your plugin's folder
+                $lang_dir = $this->plugin_path() . '/languages';
+                
+                // Load the text domain
+                load_plugin_textdomain('code-meta', false, $lang_dir);
+        }
+        
 }

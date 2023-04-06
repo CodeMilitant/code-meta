@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
  * Author URI:      https://codemilitant.com
  * Text Domain:     code-meta
  * Domain Path:     /languages
- * Version:         2.2.3
+ * Version:         2.2.8
  *
  * @package         Code_Meta
  */
