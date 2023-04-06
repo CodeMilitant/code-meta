@@ -3,7 +3,7 @@ Contributors: codemilitant
 Donate link: https://codemilitant.com/wordpress-plugin/code-meta-plugin-support/
 Tags: seo, meta tags, opengraph, search engine rankings
 Requires at least: 4.5
-Tested up to: 6.1.1
+Tested up to: 6.2
 Requires PHP: 7.0
 Stable tag: 2.2.8
 License: GPLv3
