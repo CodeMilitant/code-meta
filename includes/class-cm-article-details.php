@@ -10,6 +10,7 @@ trait CM_Article_Details
 
     public static $post_details = array();
     public static $getArticleDetails = array();
+    public static $excerpt = '';
 
     public static function cm_get_article_details($id)
     {
@@ -26,10 +27,11 @@ trait CM_Article_Details
         $article['ID'] = $post_details['ID'];
         $article['og_title'] = $post_details['post_title'];
         // if site is running Divi or Visual Composer, remove the shortcodes
-        $article['post_content'][] = preg_replace( '~\[/?[^\]]+?/?\]~s', '', $post_details['post_content'] );
-        $article['post_content'][] = preg_replace('~\s+~s', ' ', html_entity_decode(strip_tags($post_details['post_content'])));
-        $article_description = html_entity_decode(substr($article['post_content'][1], 0, 320), true);
-        $article_description = preg_replace('~\s+~sm', ' ', $article_description);
+        $excerpt = wp_strip_all_tags($post_details['post_content']);
+        $excerpt = preg_replace('!(\[(.*)\]|[[:cntrl:]]|:)!', ' ', $excerpt);
+        $excerpt = preg_replace('!(?:&nbsp;|\s)+!', ' ', $excerpt);
+        $article['post_content'] = $excerpt;
+        $article_description = html_entity_decode(substr($article['post_content'], 0, 320), true);
         $article_description = strrpos($article_description, ' ') ? substr($article_description, 0, strrpos($article_description, ' ')) : $article_description;
         $article['og_description'] = $article_description;
         $article['og_url'] = get_permalink($post_details['ID']);

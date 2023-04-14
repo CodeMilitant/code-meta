@@ -5,7 +5,7 @@ Tags: seo, meta tags, opengraph, search engine rankings
 Requires at least: 4.5
 Tested up to: 6.2
 Requires PHP: 7.0
-Stable tag: 2.2.8
+Stable tag: 2.3.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -186,9 +186,13 @@ Please update to this latest version to make the admin pages easier to read.
 
 == Changelog ==
 
-= 2.2.8 2023-04-06 =
+= 2.3.7 2023-04-14 =
 
 **Code Meta**
+
+* Fix: corrected PHP regular expressions for better compatability with Divi, Visual Composer and Elementor
+
+= 2.2.8 2023-04-06 =
 
 * Update: loaded plugin textdomin for internationalization
 * Update: modified meta tag output to use sprintf for better internationalization
