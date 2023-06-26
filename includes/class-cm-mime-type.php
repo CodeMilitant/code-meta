@@ -2,6 +2,8 @@
 
 namespace CodeMilitant\CodeMeta;
 
+defined( 'ABSPATH' ) || exit;
+
 trait CM_Mime_Type
 {
 

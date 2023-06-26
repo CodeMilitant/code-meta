@@ -1,6 +1,7 @@
 <?php
 
 use CodeMilitant\CodeMeta\Admin\CM_Admin_Menu;
+use CodeMilitant\CodeMeta\Admin\CM_Add_Social_Profile_Fields;
 use CodeMilitant\CodeMeta\Templates\CM_Content_Meta_Tags;
 
 /**
@@ -9,7 +10,7 @@ use CodeMilitant\CodeMeta\Templates\CM_Content_Meta_Tags;
  * @package CodeMeta
  */
 
-// defined( 'ABSPATH' ) || exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Main CodeMeta Class.
@@ -19,24 +20,16 @@ use CodeMilitant\CodeMeta\Templates\CM_Content_Meta_Tags;
 final class CodeMeta
 {
 
-        /**
-         * CodeMeta version.
-         *
-         * @var string
-         */
-        public $version = '2.3.7';
-
-        /**
-         * WP_Query object.
-         */
-        public $query = null;
+        const CM_ABSPATH = __DIR__ . '/';
+        const CM_PLUGIN_BASENAME = '/code-meta/code-meta.php';
+        const CM_VERSION = '2.6.5';
 
         /**
          * The single instance of the class.
          *
          * @var CodeMeta
          */
-        protected static $_instance = null;
+        private static $_instance = null;
 
         /**
          * Content meta tags
@@ -53,7 +46,7 @@ final class CodeMeta
          * @see CM()
          * @return CodeMeta - Main instance
          */
-        public static function instance()
+        public static function get_instance()
         {
                 if (is_null(self::$_instance)) {
                         self::$_instance = new self();
@@ -83,19 +76,18 @@ final class CodeMeta
          */
         public function fire_init()
         {
-                // echo 'This is the fire_init method.';
                 $this->define_constants();
-                $this->includes();
+                $this->cm_includes();
         }
 
         /**
          * Define CM Constants
          */
-        private function define_constants()
+        public function define_constants()
         {
-                $this->define('CM_ABSPATH', dirname(CM_META_FILE) . '/');
-                $this->define('CM_PLUGIN_BASENAME', plugin_basename(CM_META_FILE));
-                $this->define('CM_VERSION', $this->version);
+                $this->cm_define('CM_ABSPATH', self::CM_ABSPATH);
+                $this->cm_define('CM_PLUGIN_BASENAME', self::CM_PLUGIN_BASENAME);
+                $this->cm_define('CM_VERSION', self::CM_VERSION);
         }
 
         /**
@@ -104,7 +96,7 @@ final class CodeMeta
          * @param string      $name  Constant name.
          * @param string|bool $value Constant value.
          */
-        private function define($name, $value)
+        public function cm_define($name, $value)
         {
                 if (!defined($name))
                         define($name, $value);
@@ -113,22 +105,23 @@ final class CodeMeta
         /**
          * Include required core files used in admin and on the frontend
          */
-        public function includes()
+        public function cm_includes()
         {
 
-                include_once CM_ABSPATH . 'includes/class-autoloader.php';
-                add_action('plugins_loaded', 'code_meta_load_textdomain');
+                include_once self::CM_ABSPATH . 'class-autoloader.php';
+                add_action('plugins_loaded', 'cm_codemeta_load_textdomain');
 
                 if ($this->is_request('admin')) {
                         new CM_Admin_Menu();
+                        new CM_Add_Social_Profile_Fields();
                 }
 
                 if ($this->is_request('templates')) {
-                        add_filter('wp_head', array($this, 'cm_code_seo_social_meta'), 6);
+                        add_filter('wp_head', array($this, 'cm_code_meta'), 6);
                 }
         }
 
-        public function cm_code_seo_social_meta()
+        public function cm_code_meta()
         {
                 if ($this->is_request('found')) {
                         $get_content_tags = new CM_Content_Meta_Tags();
@@ -178,7 +171,7 @@ final class CodeMeta
                 return untrailingslashit(plugin_dir_path(CM_META_FILE));
         }
 
-        function code_meta_load_textdomain() {
+        function cm_codemeta_load_textdomain() {
                 // The path to the 'languages' directory inside your plugin's folder
                 $lang_dir = $this->plugin_path() . '/languages';
                 

@@ -2,7 +2,7 @@
 
 namespace CodeMilitant\CodeMeta;
 
-// defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 trait CM_Media_Details
 {
@@ -16,35 +16,38 @@ trait CM_Media_Details
 
 	public static function cm_get_media_details($id)
 	{
+
 		self::$media_details = static::getMetaBase($id);
-		static::$getMediaDetails = self::cm_media_details(self::$media_details);
+		static::$getMediaDetails = self::$media_details ? self::cm_media_details(self::$media_details) : null;
 		return static::$getMediaDetails;
 	}
 
 	private static function get_media_ids($media_details)
 	{
 
-		$media_details['post_meta']['_thumbnail_id'] = '';
 		$media_ids = array();
 		$combined_ids = array();
 
 		// must return an associative array to ensure that empty arrays are parsed without error when combining
-		if ((int) $media_details['post_meta']['_thumbnail_id']) {
+		if (isset($media_details['post_meta']['_thumbnail_id'])) {
 			$media_ids['featured'][] = (int) $media_details['post_meta']['_thumbnail_id'];
 		}
-		if ($media_details['post_type'] == 'product') {
-			$media_ids['featured'][] = (int) $media_details['image_id'];
-			$media_ids['gallery'] = $media_details['gallery_image_ids'];
+
+		if (!empty($media_details['post_meta']['_product_image_gallery'])) {
+			$media_ids['gallery'] = array_map('intval', explode(',', $media_details['post_meta']['_product_image_gallery']));
 		}
+
 		// get content media ids regardless of post type
 		$media_ids['content'] = self::get_content_ids($media_details);
-		if ($media_ids) {
+
+		if (!empty($media_ids)) {
 			foreach ($media_ids as $value) {
 				foreach ($value as $v) {
-					($v > 0) ? $combined_ids[] = $v : '';
+					$combined_ids[] = $v;
 				}
 			}
 		}
+
 		//must return an array to ensure that empty arrays are parsed without error when combining
 		return array_unique($combined_ids);
 	}
@@ -56,37 +59,45 @@ trait CM_Media_Details
 		$media_content = array();
 		$media_content_ids = array();
 
-		if ($media_details['post_type'] == 'product') {
-			$post_content_images = trim($media_details['description']);
-			$post_content_images .= trim($media_details['short_description']);
-		} else {
-			$post_content_images = trim($media_details['post_content']);
-			$post_content_images .= trim($media_details['post_excerpt']);
-		}
+		$post_content_images = trim($media_details['post_content']);
+		$post_content_images .= trim($media_details['post_excerpt']);
 
 		if (!empty($post_content_images)) {
 			preg_match_all('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $post_content_images, $img_content) ? $media_content[] = $img_content['src'] : '';
 		}
 
-		if (!$media_content || $media_content == null) {
+		if (empty($media_content)) {
 			return (array) (int) get_theme_mod('custom_logo');
 		}
 
-		$media_content_ids = array_map(function ($a) {
-			$media_full_size = preg_replace('/\-\d{1,5}x\d{1,5}\./', '.', $a);
-			return attachment_url_to_postid($media_full_size);
-		}, $media_content[0]);
+		if (!empty($media_content)) {
+			array_map(function ($a) use (&$media_content_ids) {
+				$media_full_size = preg_replace('/\-\d{1,5}x\d{1,5}\./', '.', $a);
+				attachment_url_to_postid($media_full_size) !== 0 ? $media_content_ids[] = attachment_url_to_postid($media_full_size) : '';
+			}, $media_content[0]);
+		}
+
 		//must return array to ensure that empty arrays are parsed without error when combining
 		return array_unique($media_content_ids);
 	}
 
 	private static function cm_media_details($media_details)
 	{
+		
+		//must return an associative array to ensure all images are listed in meta tags
 		$media_meta = array();
 
-		$media_meta = array_map(function ($a) {
-			$media_meta_raw = get_post_meta((int) $a);
-			$media_meta['metadata'] = maybe_unserialize($media_meta_raw['_wp_attachment_metadata'][0]);
+		// if media ids are empty, return empty array
+		if( self::get_media_ids($media_details)[0] === 0 ) {
+			return $media_meta;
+		}
+
+		$media_meta = array_map(function ($a) use (&$media_meta) {
+
+			$media_meta_raw = get_post_meta($a);
+			if( !empty($media_meta_raw['_wp_attachment_metadata']) ) {
+				$media_meta['metadata'] = unserialize($media_meta_raw['_wp_attachment_metadata'][0]);
+			}
 			$media_meta['og_image_url'] = wp_upload_dir()['baseurl'] . '/' .  $media_meta['metadata']['file'];
 			$media_meta['mime_type'] = self::getFilename($media_meta['metadata']['file']);
 			$media_meta['og_type'] = preg_replace('/(image|audio|video|application|text).{1,60}/i', "og_$1_", $media_meta['mime_type']);

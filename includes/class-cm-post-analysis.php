@@ -2,7 +2,7 @@
 
 namespace CodeMilitant\CodeMeta;
 
-// !defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 class CM_Post_Analysis
 {

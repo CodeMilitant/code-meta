@@ -2,7 +2,7 @@
 
 namespace CodeMilitant\CodeMeta\Admin;
 
-// defined('ABSPATH') || exit;
+defined('ABSPATH') || exit;
 
 use CodeMilitant\CodeMeta\CM_Post_Analysis;
 use CodeMilitant\CodeMeta\Templates\CM_Content_Meta_Tags;
@@ -79,22 +79,11 @@ class CM_Admin_Menu
         echo '<table id="codemilitant-upgrades">
             <thead>
             <tr>
-            <th scope="row" class="code-meta-social-profiles">Upgrade to CodeSEO Social Profiles</th>
             <th scope="row" class="code-seo-ai">Upgrade to CodeSEO AI</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-            <td class="code-seo-ai-content">
-            <div>
-            <p>Connecting your social networks will produce even better search engine results and is vital for more website clicks.</p>
-            <p>With over 30 social networks to connect, the search engines, and your social networks will love your website!</p>
-            <p>Click the button below to upgrade this free plugin to connect your social networks for just $3 dollars (USD) per month.</p>
-            </div>
-            <div class="code-seo-ai-button">
-            <a target="_blank" href="https://codemilitant.com/downloads/code-seo-social-network-add-on/" class="button button-primary">CodeSEO Social Profiles $3/month</a>
-            </div>
-            </td>
             <td class="code-seo-ai-content">
             <div>
             <p>The most advanced SEO algorithm plugin for generating impactful categories and keyword phrases (tags) from your WordPress content.</p>
@@ -130,6 +119,6 @@ class CM_Admin_Menu
     }
     public function cm_admin_menu_styles()
     {
-        wp_enqueue_style('cm-codemeta-styles', CM()->plugin_url() . '/includes/admin/cm_codemeta_admin.css', array(), CM()->version, 'all');
+        wp_enqueue_style('cm-codemeta-styles', CM()->plugin_url() . '/includes/admin/cm_codemeta_admin.css', array(), \CodeMeta::CM_VERSION, 'all');
     }
 }

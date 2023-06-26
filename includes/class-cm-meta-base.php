@@ -2,7 +2,7 @@
 
 namespace CodeMilitant\CodeMeta;
 
-// defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 use Exception;
 
@@ -21,8 +21,8 @@ trait CM_Meta_Base
             return $a[0];
         }, get_post_meta($id));
         // If the post type is a WooCommerce product, get the product data and merge it with the post data
-        if (self::$metaPost['post_type'] == 'product') {
-            static::$metaBase = (array) wc_get_product($id, '')->get_data();
+        if (function_exists('WC') && self::$metaPost == 'product') {
+            static::$metaBase = (array) get_product($id, '')->get_data();
             static::$metaBase['currency'] = get_option('woocommerce_currency');
             static::$metaBase = array_map(function ($a) {
                 if (is_array($a)) {
@@ -39,7 +39,7 @@ trait CM_Meta_Base
         if (!is_wp_error(static::$metaBase) && !empty(static::$metaBase)) {
             return static::$metaBase;
         } else {
-            throw new Exception($id->get_error_message());
+            throw new Exception('Error fetching meta data for post ID ' . $id);
         }
     }
 }

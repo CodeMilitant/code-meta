@@ -5,7 +5,7 @@ Tags: seo, meta tags, opengraph, search engine rankings
 Requires at least: 4.5
 Tested up to: 6.2
 Requires PHP: 7.0
-Stable tag: 2.3.7
+Stable tag: 2.6.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,15 +13,15 @@ CodeMeta OpenGraph Meta Tag Generator by CodeMilitant is the free foundation for
 
 == Description ==
 
-Code Meta OpenGraph Meta Tag Generator by CodeMilitant
+Code Meta: Unleash Your Power, Be Unstoppable. Brilliantly optimized for search engines, that's the Code Meta promise!
 
-This could easily be the single most important WordPress plugin you can install for your WordPress site ... and it's free!
+You're no longer just creating content; you're crafting masterpieces optimized for maximum search engine visibility. Breathe life into your content, empower it with Opengraph meta tags for a search engine feast.
 
-This plugin is designed to provide comprehensive meta tag solutions for maximum SEO results.
+Posts, pages, projects and products become a vibrant showcase accurately categorized and brilliantyly tagged for search engine optimization.
 
-The goal of code should be to work for us, with little to no intervention from the user. This simple philosophy is the way code/computers are supposed to work.
+Code Meta is not just a tool, it's a magic wand, transforming the realm of your online kingdom into a utopia of high traffic, increased visibility, and first page rankings. It's not about being part of the game anymore ... it's about being the MVP!
 
-Code Meta is focused on content creators such as the photographer, musician and videographer by including vital EXIF information in the meta tags. This will directly help combat "deep fakes" to protect your intellectual property in the public square.
+Code Meta is focused on content creators such as the photographer, musician and videographer by including vital EXIF information in the meta tags. This will directly combat "deep fakes" to protect your intellectual property in the public square.
 
 == Screenshots ==
 
@@ -95,13 +95,13 @@ This plugin is setup for internationalization and should translate all languages
 
 = Does Code Meta add records to my database? =
 
-No, unlike all other SEO plugins in the WordPress directory, the meta tags are efficiently generated through PHP and will persistently remain using any server or WordPress caching.
+Yes, but only your social profile usernames and links you provide. Unlike all other SEO plugins in the WordPress directory, the meta tags are efficiently generated through PHP and will persistently remain using any server or WordPress caching.
 
 No database bloat, and no performance degradation.
 
 = Will Code Meta slow my site down? =
 
-No, because there are no database calls, and the PHP is executed in a cascading topology, this plugin adds at most just 4 milliseconds (4/1000 of 1 second) to your website load time.
+No, because only the WordPress usermeta is accessed from the database , and the PHP is executed in a cascading topology, this plugin adds at most just 4 milliseconds (4/1000 of 1 second) to your website load time.
 
 If your website is running server or WordPress caching, all the Opengraph meta tags will be stored in the cache and will add 0 milliseconds to load times.
 
@@ -186,9 +186,15 @@ Please update to this latest version to make the admin pages easier to read.
 
 == Changelog ==
 
-= 2.3.7 2023-04-14 =
-
 **Code Meta**
+
+= 2.6.5 2023-06-26 =
+
+* Update: major upgrade to this free plugin that now includes over 30 social networks!
+* Update: added more error correction and website error protection to prevent any website crashes
+* Fix: refactored code for significantly higher performance
+
+= 2.3.7 2023-04-14 =
 
 * Fix: corrected PHP regular expressions for better compatability with Divi, Visual Composer and Elementor
 

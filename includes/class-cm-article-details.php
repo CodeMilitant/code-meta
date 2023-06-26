@@ -2,7 +2,7 @@
 
 namespace CodeMilitant\CodeMeta;
 
-// defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 trait CM_Article_Details
 {
@@ -14,8 +14,9 @@ trait CM_Article_Details
 
     public static function cm_get_article_details($id)
     {
+
         self::$post_details = self::getMetaBase($id);
-        self::$getArticleDetails = self::cm_article_details(self::$post_details);
+        self::$getArticleDetails = (self::$post_details) ? self::cm_article_details(self::$post_details) : null;
         return self::$getArticleDetails;
     }
 
@@ -54,6 +55,10 @@ trait CM_Article_Details
                 $article['og_type'] = "product";
                 $article['og_determiner'] = "an";
                 break;
+            default:
+                $article['og_type'] = "website";
+                $article['og_determiner'] = "the";
+                break;
         }
 
         $article['og_published_date'] = $post_details['post_date'];
@@ -79,20 +84,24 @@ trait CM_Article_Details
         }
 
         if ($post_details['post_type'] == 'product') {
+
             $article['wc_terms'] = get_the_terms($post_details['ID'], 'product_tag');
             $article['og_keywords'] = rtrim(strtolower(join(', ', wp_list_pluck($article['wc_terms'], 'name'))) . ', ' . $article['og_keywords'], ', ');
-            $article['og_product_name'] = strtolower($post_details['name']);
-            $article['og_product_sku'] = strtolower($post_details['sku']);
-            $article['og_product_price'] = $post_details['price'];
-            $post_details['currency'] ? $article['og_product_currency'] = $post_details['currency'] : $article['og_product_currency'] = 'USD';
-            $article['og_product_availability'] = $post_details['stock_status'];
-            $article['og_date_on_sale_from'] = $post_details['date_on_sale_from'];
-            $article['og_date_on_sale_to'] = $post_details['date_on_sale_to'];
-            if (!empty($post_details['attributes'])) {
-                $article['og_product_color'] = strtolower(implode(', ', $post_details['attributes']['color']['options']));
-                $article['og_product_size'] = strtolower(implode(', ', $post_details['attributes']['size']['options']));
+            $article['og_product_name'] = $post_details['post_title'];
+            $article['og_product_sku'] = strtolower($post_details['post_meta']['_sku']);
+            $article['og_product_price'] = $post_details['post_meta']['_price'];
+            $article['og_product_currency'] = get_woocommerce_currency();
+            $article['og_product_availability'] = $post_details['post_meta']['_stock_status'];
+            $article['og_date_on_sale_from'] = isset($post_details['post_meta']['date_on_sale_from']) ? $post_details['post_meta']['date_on_sale_from'] : '';
+            $article['og_date_on_sale_to'] = isset($post_details['post_meta']['date_on_sale_to']) ? $post_details['post_meta']['date_on_sale_to'] : '';
+
+            if (!empty($post_details['post_meta']['_product_attributes'])) {
+                $product_attributes = unserialize($post_details['post_meta']['_product_attributes']);
+                $article['og_product_color'] = $product_attributes['color']['value'];
+                $article['og_product_size'] = $product_attributes['size']['value'];
             }
         }
+
         return $article;
     }
 }
