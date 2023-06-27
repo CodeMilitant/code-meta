@@ -22,7 +22,7 @@ final class CodeMeta
 
         const CM_ABSPATH = __DIR__ . '/';
         const CM_PLUGIN_BASENAME = '/code-meta/code-meta.php';
-        const CM_VERSION = '2.6.5';
+        const CM_VERSION = '2.6.7';
 
         /**
          * The single instance of the class.

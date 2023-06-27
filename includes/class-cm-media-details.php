@@ -52,31 +52,39 @@ trait CM_Media_Details
 		return array_unique($combined_ids);
 	}
 
+	private static function cm_include_filtered_content($id = '') {
+
+		// Get the post content including shortcodes
+		$filtered_shortcode_content = apply_filters('the_content', get_post_field('post_content', $id));
+		return $filtered_shortcode_content;
+	}
+
 	private static function get_content_ids($media_details)
 	{
-
-		$post_content_images = '';
-		$media_content = array();
-		$media_content_ids = array();
-
-		$post_content_images = trim($media_details['post_content']);
-		$post_content_images .= trim($media_details['post_excerpt']);
-
+		$media_content = [];
+		$media_content_ids = [];
+	
+		$post_content_images = trim($media_details['post_content'] . $media_details['post_excerpt']);
+		$post_content_images .= trim(self::cm_include_filtered_content($media_details['ID']));
+		
 		if (!empty($post_content_images)) {
-			preg_match_all('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $post_content_images, $img_content) ? $media_content[] = $img_content['src'] : '';
+			preg_match_all('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $post_content_images, $img_content);
+			if (!empty($img_content['src'])) {
+				$media_content = $img_content['src'];
+			}
 		}
-
+	
 		if (empty($media_content)) {
-			return (array) (int) get_theme_mod('custom_logo');
+			return [get_theme_mod('custom_logo')];
 		}
-
-		if (!empty($media_content)) {
-			array_map(function ($a) use (&$media_content_ids) {
-				$media_full_size = preg_replace('/\-\d{1,5}x\d{1,5}\./', '.', $a);
-				attachment_url_to_postid($media_full_size) !== 0 ? $media_content_ids[] = attachment_url_to_postid($media_full_size) : '';
-			}, $media_content[0]);
+	
+		foreach ($media_content as $a) {
+			$media_full_size = preg_replace('/\-\d{1,5}x\d{1,5}\./', '.', $a);
+			if (attachment_url_to_postid($media_full_size) !== 0) {
+				$media_content_ids[] = attachment_url_to_postid($media_full_size);
+			}
 		}
-
+	
 		//must return array to ensure that empty arrays are parsed without error when combining
 		return array_unique($media_content_ids);
 	}
