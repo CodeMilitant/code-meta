@@ -5,7 +5,7 @@ Tags: seo, meta tags, opengraph, search engine rankings
 Requires at least: 4.5
 Tested up to: 6.2
 Requires PHP: 7.0
-Stable tag: 2.6.5
+Stable tag: 2.6.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -180,19 +180,20 @@ This process can only be performed once the WP CLI program has been installed.
 
 == Upgrade Notice ==
 
-= 2.2.3 =
+= 2.6.7 =
 
-Please update to this latest version to make the admin pages easier to read.
+Please update to this latest version to upgrade your site for over 30 social networks.
 
 == Changelog ==
 
 **Code Meta**
 
-= 2.6.5 2023-06-26 =
+= 2.6.7 2023-06-28 =
 
 * Update: major upgrade to this free plugin that now includes over 30 social networks!
 * Update: added more error correction and website error protection to prevent any website crashes
 * Fix: refactored code for significantly higher performance
+* Fix: missing class identifier that was throwing an error
 
 = 2.3.7 2023-04-14 =
 
